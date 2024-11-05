@@ -6,19 +6,10 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import App from '@/app/(tabs)/index'; // Màn hình chính (Home)
-import ProductDetail from '@/app/(tabs)/detail'; // Màn hình chi tiết sản phẩm
 const Stack = createStackNavigator();
 
-const MainNavigator = () => (
-  <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={App} options={{ title: 'DiNiStore' }} />
-      <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ title: 'Chi Tiết Sản Phẩm' }} />
-    </Stack.Navigator>
-  </NavigationContainer>
-);
 export default function TabLayout() {
+  // Gọi hàm useColorScheme() để lấy giá trị của nó
   const colorScheme = useColorScheme();
 
   return (
@@ -30,14 +21,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'home',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="cart"
+        name="cartscreen"
         options={{
           title: 'Cart',
           tabBarIcon: ({ color, focused }) => (
@@ -46,14 +37,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="fav"
+        name="Account"
         options={{
-          title: 'Favorite',
+          title: 'Account',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'heart' : 'heart-outline'} color={color} />
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
           ),
         }}
       />
+
+      
     </Tabs>
   );
 }
